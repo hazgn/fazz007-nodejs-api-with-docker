@@ -38,5 +38,14 @@ controllers.update = async (req, res) => {
     return response(res, 500, error);
   }
 };
+controllers.delete = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const result = await models.delete(id);
+    return response(res, 200, result);
+  } catch (error) {
+    return response(res, 500, error);
+  }
+};
 
 module.exports = controllers;

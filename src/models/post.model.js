@@ -57,5 +57,20 @@ models.update = ({ id, title, description }) => {
     );
   });
 };
+models.delete = (id) => {
+  return new Promise((resolve, reject) => {
+    db.query(
+      `DELETE FROM tbl_posts WHERE id = ?`,
+      [id],
+      (err, result, fields) => {
+        if (err) {
+          reject(err);
+        } else {
+          resolve(result);
+        }
+      }
+    );
+  });
+};
 
 module.exports = models;
